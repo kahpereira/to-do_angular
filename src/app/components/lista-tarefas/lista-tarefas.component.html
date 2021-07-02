@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <h1>Lista de Atividades!</h1>
+  <div class="action-box">
+    <input type="text" placeholder="Adicionar nova tarefa" [(ngModel)]="descricaoNovaTarefa" (keyup.enter)="adicionar()" />
+    <button type="button" (click)="adicionar()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <div class="action-box">
+    <span class="msg">Você tem {{ svc.contadorTarefasPendentes }} atividades pendentes</span>
+    <button type="button" (click)="svc.limpar()">
+      <i class="fas fa-trash"></i>
+    </button>
+  </div>
+  <div class="list">
+    <app-tarefa *ngFor="let item of svc.lista" [tarefa]="item" (mudarStatus)="svc.atualizar($event)"></app-tarefa>
+  </div>
+</div>
